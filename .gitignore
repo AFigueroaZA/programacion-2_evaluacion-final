@@ -1,15 +1,52 @@
+# Archivos y carpetas generadas por Android Studio / IntelliJ
 *.iml
-.gradle
-/local.properties
+.idea/
+!.idea/codeStyles
+!.idea/runConfigurations
+
+# Gradle
+.gradle/
+build/
+*/build/
+
+# Configuración local del entorno
+local.properties
+gradle.properties
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+
+# Archivos de sistema
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
+Thumbs.db
+
+# Capturas y outputs
+captures/
+output.json
+
+# NDK / CMake / Build nativo
+.externalNativeBuild/
+.cxx/
+
+# Archivos de log
+*.log
+
+# Llaves y credenciales
+*.jks
+*.keystore
+key.properties
+
+# Archivos empaquetados / compilados
+*.apk
+*.ap_
+*.dex
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
