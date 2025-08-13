@@ -1,47 +1,64 @@
 package com.programacion_2_evaluacion_1
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.programacion_2_evaluacion_1.ui.theme.Programacion2_evaluacion1Theme
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
+import android.widget.Switch
+import android.widget.TextView
+import com.programacion_2_evaluacion_1.model.CuentaMesa
+import com.programacion_2_evaluacion_1.model.ItemMenu
+import java.text.NumberFormat
+import java.util.Locale
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+    private val formatoMoneda: NumberFormat = NumberFormat.getCurrencyInstance(Locale("es", "CL")).apply {
+        maximumFractionDigits = 0
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            Programacion2_evaluacion1Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        val pastel = ItemMenu("Pastel de Choclo", 12000)
+        val cazuela = ItemMenu("Cazuela", 10000)
+        val cuenta = CuentaMesa(1).apply {
+            agregarItem(pastel, 0)
+            agregarItem(cazuela, 0)
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        val edtPastel = findViewById<EditText>(R.id.edtPastel)
+        val edtCazuela = findViewById<EditText>(R.id.edtCazuela)
+        val switchPropina = findViewById<Switch>(R.id.switchPropina)
+        val txtSubtotalPastel = findViewById<TextView>(R.id.txtSubtotalPastel)
+        val txtSubtotalCazuela = findViewById<TextView>(R.id.txtSubtotalCazuela)
+        val txtTotalSinPropina = findViewById<TextView>(R.id.txtTotalSinPropina)
+        val txtPropina = findViewById<TextView>(R.id.txtPropina)
+        val txtTotalConPropina = findViewById<TextView>(R.id.txtTotalConPropina)
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Programacion2_evaluacion1Theme {
-        Greeting("Android")
+        fun actualizarPantalla() {
+            cuenta.items[0].cantidad = edtPastel.text.toString().toIntOrNull() ?: 0
+            cuenta.items[1].cantidad = edtCazuela.text.toString().toIntOrNull() ?: 0
+            cuenta.aceptaPropina = switchPropina.isChecked
+
+            txtSubtotalPastel.text = formatoMoneda.format(cuenta.items[0].calcularSubtotal())
+            txtSubtotalCazuela.text = formatoMoneda.format(cuenta.items[1].calcularSubtotal())
+            txtTotalSinPropina.text = "Total: ${formatoMoneda.format(cuenta.calcularTotalSinPropina())}"
+            txtPropina.text = "Propina: ${formatoMoneda.format(cuenta.calcularPropina())}"
+            txtTotalConPropina.text = "Total con propina: ${formatoMoneda.format(cuenta.calcularTotalConPropina())}"
+        }
+
+        val watcher = object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) { actualizarPantalla() }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        }
+
+        edtPastel.addTextChangedListener(watcher)
+        edtCazuela.addTextChangedListener(watcher)
+        switchPropina.setOnCheckedChangeListener { _, _ -> actualizarPantalla() }
+
+        actualizarPantalla()
     }
 }
