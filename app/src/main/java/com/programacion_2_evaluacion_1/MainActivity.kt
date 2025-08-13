@@ -12,11 +12,13 @@ import com.programacion_2_evaluacion_1.model.ItemMenu
 import java.text.NumberFormat
 import java.util.Locale
 
+// Actividad principal que muestra y actualiza la cuenta de la mesa
 class MainActivity : AppCompatActivity() {
     private val formatoMoneda: NumberFormat = NumberFormat.getCurrencyInstance(Locale("es", "CL")).apply {
         maximumFractionDigits = 0
     }
 
+    // Configura la interfaz y los listeners iniciales
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -37,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         val txtPropina = findViewById<TextView>(R.id.txtPropina)
         val txtTotalConPropina = findViewById<TextView>(R.id.txtTotalConPropina)
 
+        // Refresca los subtotales y totales en la interfaz
         fun actualizarPantalla() {
             cuenta.items[0].cantidad = edtPastel.text.toString().toIntOrNull() ?: 0
             cuenta.items[1].cantidad = edtCazuela.text.toString().toIntOrNull() ?: 0
@@ -49,14 +52,21 @@ class MainActivity : AppCompatActivity() {
             txtTotalConPropina.text = "Total con propina: ${formatoMoneda.format(cuenta.calcularTotalConPropina())}"
         }
 
+        // Observa los cambios de texto para recalcular la cuenta
         val watcher = object : TextWatcher {
+            // Recalcula la pantalla después de editar un campo
             override fun afterTextChanged(s: Editable?) { actualizarPantalla() }
+            // Requerido por la interfaz, sin uso
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            // Requerido por la interfaz, sin uso
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         }
 
+        // Actualiza la cuenta al cambiar la cantidad de pastel
         edtPastel.addTextChangedListener(watcher)
+        // Actualiza la cuenta al cambiar la cantidad de cazuela
         edtCazuela.addTextChangedListener(watcher)
+        // Recalcula cuando se activa o desactiva la propina
         switchPropina.setOnCheckedChangeListener { _, _ -> actualizarPantalla() }
 
         actualizarPantalla()
