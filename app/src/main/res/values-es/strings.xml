@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Registro de Medidores</string>
+    <string name="list_title">Registros de medidores</string>
+    <string name="add_reading">Agregar registro</string>
+    <string name="list_empty_message">Aún no hay registros. Presiona el botón para agregar uno.</string>
+    <string name="list_item_date">Fecha: %1$s</string>
+    <string name="form_title">Registrar medición</string>
+    <string name="form_meter_value_label">Valor del medidor</string>
+    <string name="form_meter_date_label">Fecha de lectura</string>
+    <string name="form_meter_type_label">Tipo de medidor</string>
+    <string name="form_save_button">Guardar registro</string>
+    <string name="form_cancel_button">Volver</string>
+    <string name="form_select_date">Seleccionar fecha</string>
+    <string name="form_value_error">Ingresa un número válido</string>
+    <string name="form_date_picker_confirm">Aceptar</string>
+    <string name="form_date_picker_cancel">Cancelar</string>
+    <string name="meter_type_water">Agua</string>
+    <string name="meter_type_electricity">Luz</string>
+    <string name="meter_type_gas">Gas</string>
+</resources>

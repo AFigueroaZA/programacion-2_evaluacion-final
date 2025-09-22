@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">programacion-2_evaluacion-1</string>
+    <string name="app_name">Home Meter Tracker</string>
+    <string name="list_title">Meter readings</string>
+    <string name="add_reading">Add reading</string>
+    <string name="list_empty_message">There are no readings yet. Tap the button to add one.</string>
+    <string name="list_item_date">Date: %1$s</string>
+    <string name="form_title">Register meter reading</string>
+    <string name="form_meter_value_label">Meter value</string>
+    <string name="form_meter_date_label">Reading date</string>
+    <string name="form_meter_type_label">Type of meter</string>
+    <string name="form_save_button">Save reading</string>
+    <string name="form_cancel_button">Back</string>
+    <string name="form_select_date">Select date</string>
+    <string name="form_value_error">Enter a valid number</string>
+    <string name="form_date_picker_confirm">Accept</string>
+    <string name="form_date_picker_cancel">Cancel</string>
+    <string name="meter_type_water">Water</string>
+    <string name="meter_type_electricity">Electricity</string>
+    <string name="meter_type_gas">Gas</string>
 </resources>
