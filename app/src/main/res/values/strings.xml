@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">programacion-2_evaluacion-1</string>
+    <string name="app_name">Meter Log</string>
+    <string name="readings_title">Meter readings</string>
+    <string name="add_reading">Add reading</string>
+    <string name="no_readings">No meter readings have been added yet.</string>
+    <string name="reading_value">Value: %1$s</string>
+    <string name="reading_date">Date: %1$s</string>
+    <string name="form_title">Register meter reading</string>
+    <string name="meter_value_label">Meter value</string>
+    <string name="meter_date_label">Date</string>
+    <string name="meter_type_label">Meter type</string>
+    <string name="save_reading">Save reading</string>
+    <string name="value_error_message">Please enter a valid numeric value.</string>
+    <string name="reading_saved_message">Reading saved successfully.</string>
+    <string name="back_button">Back</string>
+    <string name="choose_date">Choose date</string>
+    <string name="type_water">Water</string>
+    <string name="type_electricity">Electricity</string>
+    <string name="type_gas">Gas</string>
 </resources>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Registro de Medidores</string>
+    <string name="readings_title">Lecturas de medidores</string>
+    <string name="add_reading">Agregar lectura</string>
+    <string name="no_readings">Aún no se han registrado lecturas.</string>
+    <string name="reading_value">Valor: %1$s</string>
+    <string name="reading_date">Fecha: %1$s</string>
+    <string name="form_title">Registrar medición</string>
+    <string name="meter_value_label">Valor del medidor</string>
+    <string name="meter_date_label">Fecha</string>
+    <string name="meter_type_label">Medidor de</string>
+    <string name="save_reading">Registrar medición</string>
+    <string name="value_error_message">Ingresa un valor numérico válido.</string>
+    <string name="reading_saved_message">Medición guardada correctamente.</string>
+    <string name="back_button">Volver</string>
+    <string name="choose_date">Elegir fecha</string>
+    <string name="type_water">Agua</string>
+    <string name="type_electricity">Luz</string>
+    <string name="type_gas">Gas</string>
+</resources>
